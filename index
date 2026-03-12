@@ -1,1 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q4practice1</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins', sans-serif;
+}
+
+body{
+background:rgb(255,115,0);
+color:white;
+}
+
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+background:rgba(0,0,0,0.25);
+}
+
+nav h2{
+font-weight:700;
+}
+
+nav ul{
+display:flex;
+gap:25px;
+list-style:none;
+}
+
+nav ul li{
+cursor:pointer;
+font-weight:500;
+}
+
+
+.main{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:60px;
+padding:80px 10%;
+flex-wrap:wrap;
+}
+
+
+.container{
+background:rgb(0, 0, 0);
+color:rgb(255, 255, 255);
+padding:40px;
+border-radius:14px;
+width:350px;
+box-shadow:0 15px 35px rgba(0,0,0,0.3);
+text-align:center;
+}
+
+.container h1{
+margin-bottom:20px;
+font-size:22px;
+}
+
+input{
+width:90%;
+padding:12px;
+border-radius:6px;
+border:1px solid #ccc;
+margin-bottom:15px;
+}
+
+button{
+padding:12px 25px;
+border:none;
+background:rgb(255,115,0);
+color:white;
+border-radius:6px;
+cursor:pointer;
+font-weight:600;
+transition:0.3s;
+}
+
+button:hover{
+background:rgb(220,90,0);
+}
+
+#result{
+margin-top:20px;
+font-size:16px;
+}
+
+
+.imageBox img{
+width:420px;
+border-radius:14px;
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+
+footer{
+text-align:center;
+padding:20px;
+background:rgba(0,0,0,0.25);
+margin-top:40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<h2>Electricity Consumption Classifier</h2>
+
+<ul>
+</ul>
+</nav>
+
+
+<section class="main">
+
+<div class="container">
+
+<h1>Electricity Consumption Classifier</h1>
+
+<input type="text" id="kwh" placeholder="Enter electricity usage (kWh)">
+<br>
+<button onclick="classifyUsage()">Classify</button>
+
+<div id="result"></div>
+
+</div>
+
+<div class="imageBox">
+<img src="https://ppinewscommons.net/wp-content/uploads/2025/09/meralco-image-352343545.jpg">
+</div>
+
+</section>
+
+  <div style="display:flex;align-items:flex-start;gap:15px;">
+        <div>
+          <strong>Save electricity</strong>
+          <p style="margin:2px 0 0;color:var(--text-muted);font-size:17px;">
+                 Here’s how you can make a difference today: Switch off lights, computers, and appliances when not in use. Set your aircon to 24°C.
+                  This is the most efficient setting for comfort and savings. 
+                  Let the sunlight in during the day and use natural ventilation.
+                   Unplug chargers and appliances after using them. 
+                   Let’s work together to create a better future. #YouHaveThePower to save energy!
+                   This is a public service announcement in partnership with the Department of Energy.
+          </p>
+        </div>
+      </div>
+
+<footer>
+<p>Electricity Consumption Classifier</p>
+</footer>
+
+<script>
+
+function classifyUsage(){
+
+let usage = document.getElementById("kwh").value;
+let result = document.getElementById("result");
+
+if(usage === ""){
+result.innerHTML = "Please enter electricity usage.";
+}
+else if(isNaN(usage)){
+result.innerHTML = "Please enter a valid number.";
+}
+else{
+
+usage = Number(usage);
+
+if(usage < 0){
+result.innerHTML = "Usage cannot be negative.";
+}
+else if(usage <= 100){
+result.innerHTML = "<b>Lifeline Consumer</b><br>Discounted electricity rates.";
+}
+else if(usage <= 200){
+result.innerHTML = "<b>Low Consumption</b><br>Normal residential rate.";
+}
+else if(usage <= 300){
+result.innerHTML = "<b>Average Consumption</b><br>Typical electricity usage.";
+}
+else if(usage <= 500){
+result.innerHTML = "<b>High Consumption</b><br>Higher electricity usage.";
+}
+else{
+result.innerHTML = "<b>Very High Consumption</b><br>Heavy electricity users.";
+}
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
